@@ -32,5 +32,7 @@ jobs:
           poetry install --no-interaction --no-ansi --no-dev
       - name: Install dbt dependencies
         run: dbt deps
-      - name: Run tests against source data
+      - name: Run debug to check for connectivity issues
         run: dbt debug
+      - name: Run tests against source
+        run: dbt test target -t ci
