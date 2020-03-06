@@ -13,7 +13,7 @@ env:
   PASSWORD: "{{ secrets.PASSWORD}}"
   # DBNAME: "{{ secrets.DBNAME}}"
   DBNAME: "analytics"
-  # CISCHEMA: "{{ secrets.CISCHEMA}}"
+  # CISCHEMA: "{{ secrets.CISCHEMA}}" 
   CISCHEMA: "development"
   PRODSCHEMA: "{{secrets.PRODSCHEMA}}"
 
