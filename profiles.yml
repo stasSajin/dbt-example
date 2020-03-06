@@ -6,23 +6,23 @@ analytics:
   outputs:
     ci:
       type: postgres
-      host: "{{ env_var('HOST_NAME') }}"
-      user: "{{ env_var('USERNAME') }}"
-      pass: "{{ env_var('PASSWORD') }}"
+      host: '${HOST_NAME}'
+      user: '${USERNAME}'
+      pass: '${PASSWORD}'
       port: 5432
-      dbname: "{{ env_var('DBNAME') }}"
-      schema: "{{ env_var('CISCHEMA') }}"
+      dbname: '${DBNAME}'
+      schema: '${CISCHEMA}'
       threads: 1
       keepalives_idle: 300 # default 0, indicating the system default
       search_path: "staging"
     prod:
       type: postgres
-      host: "{{ env_var('HOST_NAME') }}"
-      user: "{{ env_var('USERNAME') }}"
-      pass: "{{ env_var('PASSWORD') }}"
+      host: '${HOST_NAME}'
+      user: '${USERNAME}'
+      pass: '${PASSWORD}'
       port: 5432
-      dbname: "{{ env_var('DBNAME') }}"
-      schema: "{{ env_var('PRODSCHEMA') }}"
+      dbname: '${DBNAME}'
+      schema: '${PRODSCHEMA}'
       threads: 1
       keepalives_idle: 300 # default 0, indicating the system default
       search_path: "staging"
