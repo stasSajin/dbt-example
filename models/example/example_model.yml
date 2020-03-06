@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: albums
+    columns:
+      - name: albumid
+        tests:
+          - unique
+          - not_null

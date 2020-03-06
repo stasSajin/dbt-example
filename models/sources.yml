@@ -1,0 +1,27 @@
+
+version: 2
+
+sources:
+  - name: chinook
+    database: analytics
+    schema: staging
+    loader: manual
+    description: "Lorem Ipsum"
+    tables:
+      - name: album
+        description: "Lorem Imsum"
+        columns:
+          - name: albumid
+            description: "Lorem Imsum"
+            tests:
+              - unique
+              - not_null
+
+          - name: title
+            tests:
+              - not_null
+              - unique
+
+          - name: artistid
+            tests:
+              - not_null
