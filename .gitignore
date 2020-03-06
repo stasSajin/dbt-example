@@ -1,4 +1,6 @@
 .venv
+.DS_store
+
 target/
 dbt_modules/
 logs/

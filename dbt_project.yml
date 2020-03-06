@@ -26,5 +26,6 @@ on-run-end:
 
 
 models:
-  example:
+  analytics:
+    example:
       materialized: view
