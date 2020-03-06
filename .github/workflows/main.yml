@@ -1,4 +1,4 @@
-name: Build, run tests, and deploy
+name: Build Status
 on:
   push:
     branches: [ master ]
