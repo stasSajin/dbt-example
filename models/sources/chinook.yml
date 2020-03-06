@@ -199,6 +199,7 @@ sources:
           - name: invoiceid
             description: "Lorem ipsum dolor sit amet."
             tests:
+               - unique
 
           - name: customerid
             description: "Lorem ipsum dolor sit amet."

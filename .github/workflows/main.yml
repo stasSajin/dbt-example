@@ -1,24 +1,23 @@
 name: Build, run tests, and deploy
 on:
-  # Trigger the workflow on push or pull request,
-  # but only for the master branch
   push:
-    branches:
-      - master
-
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 env:
-  HOST_NAME: "{{ secrets.HOST_NAME}}"
-  USERNAME: "{{ secrets.USERNAME}}"
-  PASSWORD: "{{ secrets.PASSWORD}}"
-  DBNAME: "{{ secrets.DBNAME}}"
-  CISCHEMA: "{{ secrets.CISCHEMA}}"
-  PRODSCHEMA: "{{secrets.PRODSCHEMA}}"
+  DBT_PROFILES_DIR: ./
+  HOST_NAME: ${{secrets.HOST_NAME}}
+  USERNAME: ${{secrets.USERNAME}}
+  PASSWORD: ${{secrets.PASSWORD }}
+  DBNAME: ${{secrets.DBNAME}}
+  CISCHEMA: ${{secrets.CISCHEMA}}
+  PRODSCHEMA: ${{secrets.PRODSCHEMA}}
 
 jobs:
   build:
-    name: DBT
     runs-on: ubuntu-18.04
+
     steps:
       - name: Check out the repository code
         uses: actions/checkout@v2
@@ -33,5 +32,18 @@ jobs:
           poetry install --no-interaction --no-ansi --no-dev
       - name: Install dbt dependencies
         run: dbt deps
-      - name: Run tests against source data
-        run: dbt test
+      - name: Run debug to check for connectivity issues
+        run: dbt debug
+      - name: Run tests against sources only
+      # DBT does not allow us to only run tests against sources. Instead we need to use exclusion flags
+        run: dbt test -t ci --exclude example
+      - name: Run DBT against staging
+        run: dbt run -t ci
+      - name: Run tests against models only
+        run: dbt test -t ci --models example
+        # if deploying to master, run deploy against production
+      - name: Deploy to production
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        run: |
+          dbt run -t prod
+          dbt test -t prod

@@ -12,7 +12,7 @@ analytics:
       port: 5432
       dbname: "{{ env_var('DBNAME') }}"
       schema: "{{ env_var('CISCHEMA') }}"
-      threads: 1
+      threads: 10
       keepalives_idle: 300 # default 0, indicating the system default
       search_path: "staging"
     prod:
@@ -23,7 +23,7 @@ analytics:
       port: 5432
       dbname: "{{ env_var('DBNAME') }}"
       schema: "{{ env_var('PRODSCHEMA') }}"
-      threads: 1
+      threads: 10
       keepalives_idle: 300 # default 0, indicating the system default
       search_path: "staging"
 
