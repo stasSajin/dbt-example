@@ -1,12 +1,26 @@
 name: Build, run tests, and deploy
 on:
+  # Trigger the workflow on push or pull request,
+  # but only for the master branch
   push:
-  pull_request:
-    types: [opened, synchronize]
+    branches:
+      - master
+
+
+env:
+  HOST_NAME: "{{ secrets.HOST_NAME}}"
+  USERNAME: "{{ secrets.USERNAME}}"
+  PASSWORD: "{{ secrets.PASSWORD}}"
+  DBNAME: "{{ secrets.DBNAME}}"
+  CISCHEMA: "{{ secrets.CISCHEMA}}"
+  PRODSCHEMA: "{{secrets.PRODSCHEMA}}"
+
 jobs:
   build:
+    name: DBT
     runs-on: ubuntu-18.04
     steps:
+      - name: Check out the repository code
       - uses: actions/checkout@v2
       - name: Set up Python
         uses: actions/setup-python@v1
@@ -19,4 +33,5 @@ jobs:
           poetry install --no-interaction --no-ansi --no-dev
       - name: Install dbt dependencies
         run: dbt deps
-      
+      - name: Run tests against source data
+        run: dbt test
