@@ -34,5 +34,6 @@ jobs:
         run: dbt deps
       - name: Run debug to check for connectivity issues
         run: dbt debug
-      - name: Run tests against source
-        run: dbt test target -t ci
+      - name: Run tests against sources only
+      # DBT does not allow us to only run tests against sources. Instead we need to use exclusion flags
+        run: dbt test -t ci --exclude example
