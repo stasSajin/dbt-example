@@ -7,17 +7,12 @@ on:
 
 env:
   DBT_PROFILES_DIR: ./
-  # HOST_NAME: "{{ secrets.HOST_NAME}}"
-  HOST_NAME: "database.cwnisnos02my.us-east-2.rds.amazonaws.com"
+  HOST_NAME: ${{secrets.HOST_NAME}}
   USERNAME: ${{secrets.USERNAME}}
-  # USERNAME: "foo"
-  PASSWORD: "foo"
-  # PASSWORD: "{{ secrets.PASSWORD }}"
-  # DBNAME: "{{ secrets.DBNAME}}"
-  DBNAME: "analytics"
-  # CISCHEMA: "{{ secrets.CISCHEMA}}"
-  CISCHEMA: "development"
-  PRODSCHEMA: "{{secrets.PRODSCHEMA}}"
+  PASSWORD: ${{secrets.PASSWORD }}
+  DBNAME: ${{secrets.DBNAME}}
+  CISCHEMA: ${{secrets.CISCHEMA}}
+  PRODSCHEMA: ${{secrets.PRODSCHEMA}}
 
 jobs:
   build:
