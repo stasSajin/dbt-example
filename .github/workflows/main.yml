@@ -27,7 +27,6 @@ jobs:
           python-version: "3.7.x"
       - name: Install Poetry and dependencies
         run: |
-          echo $PWD
           python3.7 -m pip install poetry
           poetry config virtualenvs.create false
           poetry install --no-interaction --no-ansi --no-dev
