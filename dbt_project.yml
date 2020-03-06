@@ -1,19 +1,30 @@
-name: 'analytics'
-version: '1.0.0'
-profile: 'analytics'
-source-paths: ["models"]
-analysis-paths: ["analysis"]
-test-paths: ["tests"]
-data-paths: ["data"]
-macro-paths: ["macros"]
-
-target-path: "target"
+name:               'analytics'
+version:            '1.0.0'
+profile:            'analytics'
+source-paths:       ["models"]
+analysis-paths:     ["analysis"]
+test-paths:         ["tests"]
+data-paths:         ["data"]
+macro-paths:        ["macros"]
+target-path:        "target"
 clean-targets:
     - "target"
     - "dbt_modules"
     - "logs"
 
+# set these to true since dbt can change quoting behavior in future versions
+quoting:
+  database:         true
+  identifier:       true
+  schema:           true
+
+query-comment:      "run by {{ target.user }} in dbt"
+
+on-run-end:
+    - 'grant usage on schema "{{ target.schema }}" to looker_read_only'
+    - 'grant select on all tables in schema "{{ target.schema }}" to looker_read_only'
+
 
 models:
   example:
-      materialized: table
+      materialized: view
