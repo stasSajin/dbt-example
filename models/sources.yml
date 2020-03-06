@@ -6,22 +6,351 @@ sources:
     database: analytics
     schema: staging
     loader: manual
-    description: "Lorem Ipsum"
+    description: "Lorem ipsum dolor sit amet."
+
     tables:
       - name: album
-        description: "Lorem Imsum"
+        description: "Lorem ipsum dolor sit amet."
         columns:
           - name: albumid
-            description: "Lorem Imsum"
+            description: "Lorem ipsum dolor sit amet."
             tests:
               - unique
               - not_null
 
           - name: title
+            description: "Lorem ipsum dolor sit amet."
             tests:
               - not_null
               - unique
 
           - name: artistid
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - not_null
+
+      - name: artist
+        description: "Lorem ipsum dolor sit amet."
+        columns:
+          - name: artistid
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - unique
+              - not_null
+
+          - name: name
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - not_null
+              - unique
+
+      - name: customer
+        description: "Lorem ipsum dolor sit amet."
+        columns:
+          - name: customerid
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - unique
+              - not_null
+
+          - name: firstname
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - not_null
+
+          - name: lastname
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - not_null
+
+          - name: company
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+
+          - name: address
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+
+          - name: city
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+
+          - name: state
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+
+          - name: country
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+
+          - name: postalcode
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+
+          - name: phone
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+
+          - name: fax
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+
+          - name: email
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+
+          - name: supportrepid
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - not_null
+
+      - name: employee
+        description: "Lorem ipsum dolor sit amet."
+        columns:
+          - name: employeeid
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - unique
+              - not_null
+
+          - name: lastname
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - not_null
+
+          - name: firstname
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - not_null
+
+          - name: title
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - not_null
+
+          - name: reportsto
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+
+          - name: hiredate
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - not_null
+
+          - name: address
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - unique
+              - not_null
+
+          - name: city
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - not_null
+
+          - name: state
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - not_null
+
+          - name: country
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - not_null
+
+          - name: postalcode
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - not_null
+
+          - name: phone
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - not_null
+
+          - name: fax
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - not_null
+
+          - name: email
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - not_null
+
+      - name: genre
+        description: "Lorem ipsum dolor sit amet."
+        columns:
+          - name: genreid
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - unique
+              - not_null
+
+          - name: name
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - not_null
+              - unique
+
+      - name: invoice
+        description: "Lorem ipsum dolor sit amet."
+        columns:
+          - name: invoiceid
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+
+          - name: customerid
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - not_null
+
+          - name: invoicedate
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - not_null
+
+          - name: billingaddress
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - not_null
+
+          - name: billingcity
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - not_null
+
+          - name: billingstate
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+
+          - name: billingcountry
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - not_null
+
+          - name: billingpostalcode
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+
+          - name: total
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - not_null
+
+      - name: invoiceline
+        description: "Lorem ipsum dolor sit amet."
+        columns:
+          - name: invoicelineid
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - unique
+              - not_null
+
+          - name: invoiceid
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - not_null
+
+          - name: trackid
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - not_null
+
+          - name: unitprice
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - not_null
+
+          - name: quantity
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - not_null
+
+      - name: mediatype
+        description: "Lorem ipsum dolor sit amet."
+        columns:
+          - name: mediatypeid
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - unique
+              - not_null
+
+          - name: name
+            tests:
+              - not_null
+              - unique
+
+      - name: playlist
+        description: "Lorem ipsum dolor sit amet."
+        columns:
+          - name: playlistid
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - unique
+              - not_null
+
+          - name: name
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - not_null
+
+      - name: playlisttrack
+        description: "Lorem ipsum dolor sit amet."
+        columns:
+          - name: playlistid
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - not_null
+
+          - name: trackid
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - not_null
+
+      - name: track
+        description: "Lorem ipsum dolor sit amet."
+        columns:
+          - name: trackid
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - not_null
+
+          - name: name
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - not_null
+
+          - name: albumid
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - not_null
+
+          - name: mediatypeid
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - not_null
+
+          - name: genreid
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - not_null
+
+          - name: composer
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+
+          - name: milliseconds
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - not_null
+
+          - name: bytes
+            description: "Lorem ipsum dolor sit amet."
+            tests:
+              - not_null
+
+          - name: unitprice
+            description: "Lorem ipsum dolor sit amet."
             tests:
               - not_null
