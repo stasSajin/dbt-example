@@ -199,6 +199,7 @@ sources:
           - name: invoiceid
             description: "Lorem ipsum dolor sit amet."
             tests:
+               - unique
 
           - name: customerid
             description: "Lorem ipsum dolor sit amet."
@@ -251,6 +252,7 @@ sources:
             description: "Lorem ipsum dolor sit amet."
             tests:
               - not_null
+              - unique
 
           - name: trackid
             description: "Lorem ipsum dolor sit amet."
