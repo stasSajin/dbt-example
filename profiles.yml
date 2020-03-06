@@ -7,8 +7,8 @@ analytics:
     ci:
       type: postgres
       host: "{{ env_var('HOST_NAME') }}"
-      user: "{{ secrets.USERNAME }}"
-      pass: "{{ secrets.PASSWORD }}"
+      user: "{{ env_var('USERNAME') }}"
+      pass: "{{ env_var('PASSWORD') }}"
       port: 5432
       dbname: "{{ env_var('DBNAME') }}"
       schema: "{{ env_var('CISCHEMA') }}"
