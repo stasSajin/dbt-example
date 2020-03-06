@@ -47,3 +47,15 @@ jobs:
         run: |
           dbt run -t prod
           dbt test -t prod
+      - name: Build Docs
+        run: dbt docs generate
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v1.0
+        with:
+          publish-dir: './target'
+          production-branch: master
+          # github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: "Deploy from GitHub Actions"
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
