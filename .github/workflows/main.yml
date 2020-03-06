@@ -51,6 +51,8 @@ jobs:
           dbt test -t prod
       - name: Build Docs
         run: dbt docs generate
+      - name: show target
+        run: ls ./target
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.0
         with:
