@@ -6,6 +6,7 @@ on:
     branches: [ master ]
 
 env:
+  DBT_PROFILES_DIR: ./
   HOST_NAME: "{{ secrets.HOST_NAME}}"
   USERNAME: "{{ secrets.USERNAME}}"
   PASSWORD: "{{ secrets.PASSWORD}}"
