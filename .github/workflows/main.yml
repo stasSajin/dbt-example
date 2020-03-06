@@ -1,11 +1,9 @@
 name: Build, run tests, and deploy
 on:
-  # Trigger the workflow on push or pull request,
-  # but only for the master branch
   push:
-    branches:
-      - master
-
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 env:
   HOST_NAME: "{{ secrets.HOST_NAME}}"
@@ -17,8 +15,8 @@ env:
 
 jobs:
   build:
-    name: DBT
     runs-on: ubuntu-18.04
+
     steps:
       - name: Check out the repository code
         uses: actions/checkout@v2
@@ -28,6 +26,7 @@ jobs:
           python-version: "3.7.x"
       - name: Install Poetry and dependencies
         run: |
+          echo $PWD
           python3.7 -m pip install poetry
           poetry config virtualenvs.create false
           poetry install --no-interaction --no-ansi --no-dev
