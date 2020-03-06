@@ -33,4 +33,4 @@ jobs:
       - name: Install dbt dependencies
         run: dbt deps
       - name: Run tests against source data
-        run: dbt test
+        run: dbt debug
