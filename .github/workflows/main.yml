@@ -9,7 +9,7 @@ env:
   DBT_PROFILES_DIR: ./
   # HOST_NAME: "{{ secrets.HOST_NAME}}"
   HOST_NAME: "database.cwnisnos02my.us-east-2.rds.amazonaws.com"
-  USERNAME: {{ secrets.USERNAME }}
+  USERNAME: ${{secrets.USERNAME}}
   # USERNAME: "foo"
   PASSWORD: "foo"
   # PASSWORD: "{{ secrets.PASSWORD }}"
