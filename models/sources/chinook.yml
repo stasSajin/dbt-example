@@ -252,7 +252,6 @@ sources:
             description: "Lorem ipsum dolor sit amet."
             tests:
               - not_null
-              - unique
 
           - name: trackid
             description: "Lorem ipsum dolor sit amet."

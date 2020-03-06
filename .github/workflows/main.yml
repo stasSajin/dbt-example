@@ -37,3 +37,13 @@ jobs:
       - name: Run tests against sources only
       # DBT does not allow us to only run tests against sources. Instead we need to use exclusion flags
         run: dbt test -t ci --exclude example
+      - name: Run DBT against staging
+        run: dbt run -t ci
+      - name: Run tests against models only
+        run: dbt test -t ci --models example
+        # if deploying to master, run deploy against production
+      - name: Deploy to production
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        run: |
+          dbt run -t prod
+          dbt test -t prod
