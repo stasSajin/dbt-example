@@ -1,4 +1,4 @@
-name: Build, run tests, and deploy
+name: Build Status
 on:
   push:
     branches: [ master ]
@@ -13,6 +13,8 @@ env:
   DBNAME: ${{secrets.DBNAME}}
   CISCHEMA: ${{secrets.CISCHEMA}}
   PRODSCHEMA: ${{secrets.PRODSCHEMA}}
+  NETLIFY_AUTH_TOKEN: ${{secrets.NETLIFY_AUTH_TOKEN}}
+  NETLIFY_SITE_ID: ${{secrets.NETLIFY_SITE_ID}}
 
 jobs:
   build:
@@ -21,29 +23,60 @@ jobs:
     steps:
       - name: Check out the repository code
         uses: actions/checkout@v2
+
+
       - name: Set up Python
         uses: actions/setup-python@v1
         with:
           python-version: "3.7.x"
+
+
       - name: Install Poetry and dependencies
         run: |
           python3.7 -m pip install poetry
           poetry config virtualenvs.create false
           poetry install --no-interaction --no-ansi --no-dev
+
+
       - name: Install dbt dependencies
         run: dbt deps
+
+
       - name: Run debug to check for connectivity issues
         run: dbt debug
+
+
       - name: Run tests against sources only
-      # DBT does not allow us to only run tests against sources. Instead we need to use exclusion flags
         run: dbt test -t ci --exclude example
+
+
       - name: Run DBT against staging
         run: dbt run -t ci
+
+
       - name: Run tests against models only
         run: dbt test -t ci --models example
-        # if deploying to master, run deploy against production
+
+
       - name: Deploy to production
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         run: |
           dbt run -t prod
           dbt test -t prod
+
+
+      - name: Build Docs
+        run: dbt docs generate
+
+
+      - name: show target
+        run: ls ./target
+
+
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v1.0
+        with:
+          publish-dir: './target'
+          production-branch: master
+          deploy-message: "Deploy from GitHub Actions"
+          github-token: ${{secrets.GITHUB_TOKEN}}
