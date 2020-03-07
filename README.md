@@ -8,7 +8,7 @@
 - [Pipeline Steps:](#pipeline-steps)
 	- [On Pull Requests](#on-pull-requests)
 	- [On Master](#on-master)
-	- [How to share documentation.](#how-to-share-documentation)
+- [How to share documentation.](#how-to-share-documentation)
 - [More information](#more-information)
 
 <!-- /TOC -->
@@ -39,7 +39,7 @@ For the purposes of testing the project, I set up a micro PostgresSQL instance o
 * The CI/CD pipeline on master is identical to the pull requests except everything is run with the flag `dbt run --target prod`
 
 
-## How to share documentation.
+# How to share documentation.
 * Create account on Netlify
 * Set up a site. You can start the set up by dragging the folder `target` onto the generate site tool.
 * Copy paste the code below into your github workflow:
