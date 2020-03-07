@@ -11,9 +11,9 @@ analytics:
       pass: "{{ env_var('PASSWORD') }}"
       port: 5432
       dbname: "{{ env_var('DBNAME') }}"
-      schema: "{{ env_var('CISCHEMA') }}"
+      schema: "{{ env_var('CISCHEMA') }}" # run models against development
       threads: 10
-      keepalives_idle: 300 # default 0, indicating the system default
+      keepalives_idle: 300
       search_path: "staging"
     prod:
       type: postgres
@@ -22,9 +22,9 @@ analytics:
       pass: "{{ env_var('PASSWORD') }}"
       port: 5432
       dbname: "{{ env_var('DBNAME') }}"
-      schema: "{{ env_var('PRODSCHEMA') }}"
+      schema: "{{ env_var('PRODSCHEMA') }}" 
       threads: 10
-      keepalives_idle: 300 # default 0, indicating the system default
+      keepalives_idle: 300
       search_path: "staging"
 
 config:
