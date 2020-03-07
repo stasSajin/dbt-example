@@ -9,7 +9,6 @@
 	- [On Pull Requests](#on-pull-requests)
 	- [On Master](#on-master)
 - [How to share documentation.](#how-to-share-documentation)
-- [More information](#more-information)
 
 <!-- /TOC -->
 
@@ -55,10 +54,3 @@ name: Deploy Docs
 ```
 
 This will generate the dbt documentation for your project on every commit and will allow you to preview the docs. Only when the PR is merged to master the docs get deployed to production.
-
-
-# More information
-What is dbt?
-Read the dbt viewpoint
-Installation
-Join the chat on Slack for live questions and support.
