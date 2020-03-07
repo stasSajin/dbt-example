@@ -42,41 +42,33 @@ jobs:
         run: dbt deps
 
 
-      - name: Run debug to check for connectivity issues
-        run: dbt debug
-
-
       - name: Run tests against sources only
-        run: dbt test -t ci --exclude example
+        run: dbt test --target ci --exclude example
 
 
       - name: Run DBT against staging
-        run: dbt run -t ci
+        run: dbt run --target ci
 
 
       - name: Run tests against models only
-        run: dbt test -t ci --models example
-
-
-      - name: Deploy to production
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        run: |
-          dbt run -t prod
-          dbt test -t prod
+        run: dbt test --target ci --models example
 
 
       - name: Build Docs
         run: dbt docs generate
 
 
-      - name: show target
-        run: ls ./target
-
-
-      - name: Deploy to Netlify
+      - name: Deploy Docs
         uses: nwtgck/actions-netlify@v1.0
         with:
           publish-dir: './target'
           production-branch: master
           deploy-message: "Deploy from GitHub Actions"
           github-token: ${{secrets.GITHUB_TOKEN}}
+
+
+      - name: Deploy to production
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        run: |
+          dbt run --target prod
+          dbt test --target prod
