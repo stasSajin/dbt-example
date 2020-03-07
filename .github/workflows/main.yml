@@ -55,8 +55,12 @@ jobs:
 
 
       - name: Build Docs
-        run: dbt docs generate
+        if: github.event_name == 'push' && github.ref != 'refs/heads/master'
+        run: dbt docs generate --target ci
 
+      - name: Build Docs Production
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        run: dbt docs generate --target prod
 
       - name: Deploy Docs
         uses: nwtgck/actions-netlify@v1.0
