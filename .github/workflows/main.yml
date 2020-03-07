@@ -43,15 +43,15 @@ jobs:
 
 
       - name: Run tests against sources only
-        run: dbt test -t ci --exclude example
+        run: dbt test --target ci --exclude example
 
 
       - name: Run DBT against staging
-        run: dbt run -t ci
+        run: dbt run --target ci
 
 
       - name: Run tests against models only
-        run: dbt test -t ci --models example
+        run: dbt test --target ci --models example
 
 
       - name: Build Docs
@@ -70,5 +70,5 @@ jobs:
       - name: Deploy to production
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         run: |
-          dbt run -t prod
-          dbt test -t prod
+          dbt run --target prod
+          dbt test --target prod
