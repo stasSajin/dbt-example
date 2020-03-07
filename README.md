@@ -21,7 +21,7 @@ For the purposes of testing the project, I set up a micro PostgresSQL instance o
 ### On Pull Requests
 * First, the CI environment sets up all the dependencies.
 * Run `dbt test` against your `sources` only. Note that we run tests for sources only because it allows us to verify the data integrity before we generate new models. In this context, a source is a table or collection of tables that get dumped into by the DB by some outside ETL system (e.g., Airflow, Dagster, Snowpipe, DMS, etc).
-* Run `dbt run --target ci`. Ideally, the CI/CD environment will only run models that have been modified. DBT currently does not have this built out of the box. Note that this will not affect the production schema and the output of all the models will be available only to people who have access to dveelopment schema
+* Run `dbt run --target ci`. Ideally, the CI/CD environment will only run models that have been modified. DBT currently does not have this built out of the box. Note that this will not affect the production schema and the output of all the models will be available only to people who have access to development schema
 * Run
 
 
