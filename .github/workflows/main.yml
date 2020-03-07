@@ -79,3 +79,4 @@ jobs:
           publish-dir: './target'
           production-branch: master
           deploy-message: "Deploy from GitHub Actions"
+          github-token: ${{secrets.GITHUB_TOKEN}}
