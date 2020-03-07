@@ -55,7 +55,6 @@ jobs:
 
 
       - name: Build Docs
-        if: github.event_name == 'push' && github.ref != 'refs/heads/master'
         run: dbt docs generate --target ci
 
       - name: Build Docs Production
